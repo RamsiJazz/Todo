@@ -24,3 +24,8 @@ def update(request,todo_id):
             form.save()
             return redirect('home')
     return render(request,'update.html',{'forms':form})
+
+def delete(request,todo_id):
+    if request.method =='POST':
+        Todo.objects.get(id=todo_id).delete()
+        return redirect('home')
